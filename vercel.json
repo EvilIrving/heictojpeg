@@ -39,7 +39,7 @@
       ]
     },
     {
-      "source": "/favicon.*",
+      "source": "/favicon/:path*",
       "headers": [
         {
           "key": "Cache-Control",
@@ -48,7 +48,7 @@
       ]
     },
     {
-      "source": "/logo.*",
+      "source": "/logo/:path*",
       "headers": [
         {
           "key": "Cache-Control",
