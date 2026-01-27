@@ -60,9 +60,9 @@ export default function UI() {
     setQuality(nextQuality);
   }, []);
 
-  function resolveExtension() {
+  const resolveExtension = useCallback(() => {
     return format.replace("image/", "");
-  }
+  }, [format]);
 
   const convert = useCallback(async () => {
     if (!userFiles.length) return;
@@ -143,7 +143,7 @@ export default function UI() {
     } finally {
       setLoading(false);
     }
-  }, [userFiles, format, quality]);
+  }, [userFiles, format, quality, resolveExtension, t]);
 
   const downloadImages = useCallback(() => {
     const extension = resolveExtension();
@@ -173,7 +173,7 @@ export default function UI() {
           console.error("Failed to generate the zip file:", error);
         });
     })();
-  }, [userFiles, format]);
+  }, [userFiles, resolveExtension]);
 
   const downloadImage = useCallback(
     (item: userFile) => {
@@ -185,7 +185,7 @@ export default function UI() {
         saveAs(item.convertedFile!, `${item.name}.${extension}`);
       })();
     },
-    [format]
+    [resolveExtension]
   );
 
   const clearAllFiles = useCallback(() => {
