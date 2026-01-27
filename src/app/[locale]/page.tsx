@@ -1,15 +1,23 @@
 import { Suspense } from "react";
 import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
+import { unstable_setRequestLocale } from "next-intl/server";
 
 import FAQ from "@/components/faq/page";
 import Footer from "@/components/footer";
+import { type Locale } from "@/i18n.config";
 
 const Main = dynamic(() => import("@/components/element/Main"), {
   ssr: false,
 });
 
-export default function Home() {
+export default function Home({
+  params: { locale },
+}: {
+  params: { locale: Locale };
+}) {
+  unstable_setRequestLocale(locale);
+
   const t = useTranslations("HomePage");
   return (
     <>

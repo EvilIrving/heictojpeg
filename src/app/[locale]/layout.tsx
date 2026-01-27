@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Script from "next/script";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
+import { getMessages, unstable_setRequestLocale } from "next-intl/server";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 
 import { GoogleAnalytics } from "@/analytics";
@@ -105,6 +105,8 @@ export default async function RootLayout({
   children: React.ReactNode;
   params: { locale: Locale };
 }) {
+  unstable_setRequestLocale(locale);
+
   // Providing all messages to the client
   // side is the easiest way to get started
   const messages = await getMessages();

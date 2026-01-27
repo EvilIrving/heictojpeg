@@ -143,7 +143,7 @@ export default function UI() {
     } finally {
       setLoading(false);
     }
-  }, [userFiles, format, quality, resolveExtension, t]);
+  }, [userFiles, quality, resolveExtension, t]);
 
   const downloadImages = useCallback(() => {
     const extension = resolveExtension();
