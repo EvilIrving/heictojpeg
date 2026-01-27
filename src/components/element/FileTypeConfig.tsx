@@ -18,13 +18,19 @@ function FileTypeConfig({
   setQualityValue,
 }: FileTypeConfigProps) {
   const t = useTranslations("Config");
-  const toggleFormat = useCallback((convertFormat: string) => {
-    setFormat(convertFormat);
-  }, [setFormat]);
+  const toggleFormat = useCallback(
+    (convertFormat: string) => {
+      setFormat(convertFormat);
+    },
+    [setFormat]
+  );
 
-  const slideQuality = useCallback((quality: number) => {
-    setQualityValue(quality);
-  }, [setQualityValue]);
+  const slideQuality = useCallback(
+    (quality: number) => {
+      setQualityValue(quality);
+    },
+    [setQualityValue]
+  );
   return (
     <section className="py-4">
       <div>

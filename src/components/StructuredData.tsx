@@ -1,4 +1,5 @@
 import Script from "next/script";
+
 import { siteMetadata } from "@/data.config";
 
 export default function StructuredData() {

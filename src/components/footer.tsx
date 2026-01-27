@@ -5,9 +5,7 @@ const Footer = () => {
   return (
     <footer className="border-t border-border bg-card py-8 transition-colors duration-300">
       <div className="container mx-auto flex flex-col items-center justify-center gap-2 sm:flex-row">
-        <p className="text-sm text-muted-foreground sm:mr-2">
-          {t("contact")}
-        </p>
+        <p className="text-sm text-muted-foreground sm:mr-2">{t("contact")}</p>
         <div className="flex gap-3">
           <a
             href="https://twitter.com/@LoseWings"

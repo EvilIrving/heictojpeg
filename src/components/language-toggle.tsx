@@ -4,11 +4,7 @@ import clsx from "clsx";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
-import {
-  Locale,
-  localeNames,
-  locales,
-} from "@/i18n.config";
+import { Locale, localeNames, locales } from "@/i18n.config";
 
 const LOCALE_COOKIE = "NEXT_LOCALE";
 
@@ -19,14 +15,14 @@ const LanguageToggle = ({ locale }: { locale: Locale }) => {
   const changeLocale = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
     const target = e.target as HTMLElement;
     const newLocale = target.dataset["locale"] as Locale;
-    
+
     if (newLocale && newLocale !== locale) {
       // 设置 cookie 保存用户选择
       document.cookie = `${LOCALE_COOKIE}=${newLocale}; path=/; max-age=${365 * 24 * 60 * 60}; SameSite=Lax`;
-      
+
       // 获取当前路径（移除语言前缀）
       const pathWithoutLocale = pathname.replace(`/${locale}`, "") || "/";
-      
+
       // 重定向到新语言的路径，并强制刷新页面
       window.location.href = `/${newLocale}${pathWithoutLocale}`;
     }
@@ -37,7 +33,7 @@ const LanguageToggle = ({ locale }: { locale: Locale }) => {
       onMouseEnter={() => setDropdownOpen(true)}
       onMouseLeave={() => setDropdownOpen(false)}
     >
-      <button className="flex items-center text-foreground transition-colors duration-300 hover:text-primary focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background rounded-md">
+      <button className="flex items-center rounded-md text-foreground transition-colors duration-300 hover:text-primary focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background">
         <Image
           src="/icons/language.svg"
           width={20}
@@ -66,7 +62,7 @@ const LanguageToggle = ({ locale }: { locale: Locale }) => {
                 className={clsx(
                   "block rounded px-4 py-2 text-sm transition-colors duration-200",
                   lang === locale
-                    ? "pointer-events-none bg-primary text-primary-foreground cursor-default"
+                    ? "pointer-events-none cursor-default bg-primary text-primary-foreground"
                     : "cursor-pointer hover:bg-accent hover:text-accent-foreground"
                 )}
               >

@@ -91,7 +91,7 @@ export default function UI() {
     try {
       const { default: heic2any } = await import("heic2any");
       let convertedCount = 0;
-      
+
       for (const id of fileIds) {
         const targetFile = userFilesRef.current.find((file) => file.id === id);
         if (!targetFile) continue;
@@ -102,7 +102,9 @@ export default function UI() {
             ...option,
           });
 
-          const blobResult = Array.isArray(result) ? result[0] : (result as Blob);
+          const blobResult = Array.isArray(result)
+            ? result[0]
+            : (result as Blob);
           const convertedFile = new File(
             [blobResult],
             `${targetFile.name}.${extension}`
@@ -155,7 +157,9 @@ export default function UI() {
       userFiles.forEach((item) => {
         if (!item.convertedFile) return;
         hasConvertibleFiles = true;
-        zip.file(`${item.name}.${extension}`, item.convertedFile, { binary: true });
+        zip.file(`${item.name}.${extension}`, item.convertedFile, {
+          binary: true,
+        });
       });
 
       if (!hasConvertibleFiles) return;
@@ -171,15 +175,18 @@ export default function UI() {
     })();
   }, [userFiles, format]);
 
-  const downloadImage = useCallback((item: userFile) => {
-    if (!item.convertedFile) return;
+  const downloadImage = useCallback(
+    (item: userFile) => {
+      if (!item.convertedFile) return;
 
-    const extension = resolveExtension();
-    (async () => {
-      const saveAs = (await import("file-saver")).default;
-      saveAs(item.convertedFile!, `${item.name}.${extension}`);
-    })();
-  }, [format]);
+      const extension = resolveExtension();
+      (async () => {
+        const saveAs = (await import("file-saver")).default;
+        saveAs(item.convertedFile!, `${item.name}.${extension}`);
+      })();
+    },
+    [format]
+  );
 
   const clearAllFiles = useCallback(() => {
     setUserFiles([]);
@@ -196,7 +203,7 @@ export default function UI() {
         <Upload onHandleFiles={handleFiles} isDisabled={loading} />
         {userFiles.length > 0 ? (
           <>
-            <div className="space-y-4 rounded-lg border border-border bg-card/50 backdrop-blur-sm p-4 shadow-sm transition-all duration-300">
+            <div className="space-y-4 rounded-lg border border-border bg-card/50 p-4 shadow-sm backdrop-blur-sm transition-all duration-300">
               <Config
                 format={format}
                 quality={quality}
@@ -250,9 +257,7 @@ export default function UI() {
           </>
         ) : (
           <div className="rounded-lg border border-dashed border-border bg-muted/30 px-6 py-8 text-center transition-colors duration-300">
-            <p className="text-sm text-muted-foreground">
-              {t("noFiles")}
-            </p>
+            <p className="text-sm text-muted-foreground">{t("noFiles")}</p>
           </div>
         )}
       </div>

@@ -9,10 +9,7 @@ interface UploadProps {
   isDisabled?: boolean;
 }
 
-function Upload({
-  onHandleFiles,
-  isDisabled = false,
-}: UploadProps) {
+function Upload({ onHandleFiles, isDisabled = false }: UploadProps) {
   const t = useTranslations("Upload");
   const [isDragging, setIsDragging] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -70,7 +67,7 @@ function Upload({
           {
             "border-primary bg-primary/5 ring-2 ring-primary/20": isDragging,
             "border-border bg-card": !isDragging,
-            "opacity-50 cursor-not-allowed": isDisabled,
+            "cursor-not-allowed opacity-50": isDisabled,
           }
         )}
         onDrop={handleDrop}
@@ -96,17 +93,18 @@ function Upload({
             </svg>
           </div>
           <div className="text-foreground">
-            <span className="font-medium text-primary hover:text-primary/80 transition-colors">
+            <span className="font-medium text-primary transition-colors hover:text-primary/80">
               {t("clickToUpload")}
             </span>{" "}
             {t("dragAndDrop")}
           </div>
           <p className="text-sm text-muted-foreground">{t("fileTypes")}</p>
-          <p className="text-sm text-muted-foreground">
-            {t("fileLimit")}
-          </p>
+          <p className="text-sm text-muted-foreground">{t("fileLimit")}</p>
           {error && (
-            <p className="mt-2 text-sm text-destructive font-medium" role="alert">
+            <p
+              className="mt-2 text-sm font-medium text-destructive"
+              role="alert"
+            >
               ⚠️ {error}
             </p>
           )}

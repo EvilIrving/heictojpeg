@@ -30,7 +30,7 @@ const Header = () => {
       className={clsx(
         "sticky top-0 z-40 w-full transition-all duration-300",
         isScrolled
-          ? "border-b border-border bg-background/80 backdrop-blur-md shadow-sm supports-[backdrop-filter]:bg-background/60"
+          ? "border-b border-border bg-background/80 shadow-sm backdrop-blur-md supports-[backdrop-filter]:bg-background/60"
           : "bg-transparent"
       )}
     >

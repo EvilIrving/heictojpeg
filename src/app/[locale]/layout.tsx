@@ -9,10 +9,10 @@ import { getMessages } from "next-intl/server";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 
 import { GoogleAnalytics } from "@/analytics";
-import StructuredData from "@/components/StructuredData";
 import Header from "@/components/header";
-import { type Locale, locales } from "@/i18n.config";
+import StructuredData from "@/components/StructuredData";
 import { siteMetadata } from "@/data.config";
+import { type Locale, locales } from "@/i18n.config";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,7 +31,7 @@ export async function generateMetadata({
   const translation = siteMetadata.translations[localeKey];
   const localeCode = locale === "zh" ? "zh_CN" : "en_US";
   const currentUrl = `${siteMetadata.siteUrl}/${locale}`;
-  
+
   return {
     metadataBase: new URL(siteMetadata.siteUrl),
     title: {
@@ -130,7 +130,7 @@ export default async function RootLayout({
             <NextIntlClientProvider messages={messages}>
               <Header />
               <main className="flex-1">
-                <div className="mx-auto w-full max-w-4xl px-4 py-4 sm:px-6 lg:px-8">
+                <div className="mx-auto w-full max-w-4xl p-4 sm:px-6 lg:px-8">
                   {children}
                 </div>
               </main>

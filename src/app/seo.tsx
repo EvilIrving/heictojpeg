@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
-import { type Locale } from "@/i18n.config";
 import { siteMetadata } from "@/data.config";
+import { type Locale } from "@/i18n.config";
 
 interface PageSEOProps {
   title: string;
@@ -16,7 +16,7 @@ interface PageSEOProps {
 function getLocalizedMetadata(locale: Locale) {
   const localeKey = locale === "zh" ? "zh-CN" : "en-US";
   const translation = siteMetadata.translations[localeKey];
-  
+
   return {
     title: translation.title,
     description: translation.description,
@@ -34,7 +34,7 @@ export function genPageMetadata({
   const pageTitle = title || localizedMeta.title;
   const pageDescription = description || localizedMeta.description;
   const localeCode = locale === "zh" ? "zh_CN" : "en_US";
-  
+
   return {
     title: pageTitle,
     description: pageDescription,

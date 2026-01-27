@@ -53,7 +53,8 @@ export default function TableElement({
   // 计算转换进度
   const convertedCount = files.filter((file) => file.isConverted).length;
   const totalCount = files.length;
-  const conversionProgress = totalCount > 0 ? Math.round((convertedCount / totalCount) * 100) : 0;
+  const conversionProgress =
+    totalCount > 0 ? Math.round((convertedCount / totalCount) * 100) : 0;
 
   function clearImages() {
     clear();
@@ -138,7 +139,11 @@ export default function TableElement({
               {t("convertingFiles")}
             </span>
             <span className="text-muted-foreground">
-              {t("progress", { current: convertedCount, total: totalCount, percent: conversionProgress })}
+              {t("progress", {
+                current: convertedCount,
+                total: totalCount,
+                percent: conversionProgress,
+              })}
             </span>
           </div>
           <div className="h-2 w-full overflow-hidden rounded-full bg-muted">
@@ -167,13 +172,17 @@ export default function TableElement({
                   {file.isConverted ? (
                     file.convertedSize
                   ) : file.error ? (
-                    <span className="text-destructive font-medium">
+                    <span className="font-medium text-destructive">
                       {file.error}
                     </span>
                   ) : isConverting ? (
-                    <span className="text-muted-foreground">{t("converting")}</span>
+                    <span className="text-muted-foreground">
+                      {t("converting")}
+                    </span>
                   ) : (
-                    <span className="text-muted-foreground">{t("waiting")}</span>
+                    <span className="text-muted-foreground">
+                      {t("waiting")}
+                    </span>
                   )}
                 </TableCell>
                 <TableCell>
@@ -197,11 +206,13 @@ export default function TableElement({
                         </Button>
                       </div>
                     ) : file.error ? (
-                      <span className="text-destructive font-medium">
+                      <span className="font-medium text-destructive">
                         {file.error}
                       </span>
                     ) : (
-                      <span className="text-muted-foreground">{t("waiting")}</span>
+                      <span className="text-muted-foreground">
+                        {t("waiting")}
+                      </span>
                     )}
                   </div>
                 </TableCell>

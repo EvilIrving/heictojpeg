@@ -13,7 +13,8 @@ export const siteMetadata = {
   headerTitle: "HEIC to PNG/JPEG Converter - Simple, Free, and Offline",
   description:
     "Convert HEIC to JPG effortlessly with our user-friendly website. Experience high-quality image conversion and enjoy compatibility across multiple platforms.",
-  keywords: "HEIC converter, HEIC to JPG, HEIC to PNG, image converter, free converter, offline converter, batch conversion, image format conversion",
+  keywords:
+    "HEIC converter, HEIC to JPG, HEIC to PNG, image converter, free converter, offline converter, batch conversion, image format conversion",
   introduce:
     "Our converter provides a hassle-free solution, allowing you to transform your HEIC files into widely supported formats. With our offline functionality, you can conveniently convert your images without the need for an internet connection. ",
   language: "en-us",
@@ -57,11 +58,13 @@ export const siteMetadata = {
   translations: {
     "en-US": {
       title: "HEIC to PNG/JPEG Converter - Simple, Free, and Offline",
-      description: "Convert HEIC to JPG effortlessly with our user-friendly website. Experience high-quality image conversion and enjoy compatibility across multiple platforms.",
+      description:
+        "Convert HEIC to JPG effortlessly with our user-friendly website. Experience high-quality image conversion and enjoy compatibility across multiple platforms.",
     },
     "zh-CN": {
       title: "HEIC转JPG/PNG转换器 - 简单、免费、离线",
-      description: "轻松地使用我们的用户友好型网站将HEIC转换为JPG。体验高质量的图像转换，享受多平台兼容性。",
+      description:
+        "轻松地使用我们的用户友好型网站将HEIC转换为JPG。体验高质量的图像转换，享受多平台兼容性。",
     },
   },
 };

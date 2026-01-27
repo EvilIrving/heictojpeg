@@ -6,7 +6,7 @@ import FaqItem from "./faq";
 
 export default function FAQ() {
   const t = useTranslations("FAQ");
-  
+
   const features = [
     {
       title: t("worksOffline.title"),

@@ -22,9 +22,7 @@ export function ModeToggle() {
 
   // 防止水化不匹配
   if (!mounted) {
-    return (
-      <div className="relative h-9 w-16 rounded-full bg-muted" />
-    );
+    return <div className="relative h-9 w-16 rounded-full bg-muted" />;
   }
 
   return (
@@ -39,30 +37,36 @@ export function ModeToggle() {
       <div
         className={`absolute inset-0 rounded-full transition-all duration-500 ease-in-out ${
           enabled
-            ? "bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
-            : "bg-gradient-to-r from-orange-400 via-yellow-400 to-amber-300"
+            ? "from-indigo-500 via-purple-500 to-pink-500 bg-gradient-to-r"
+            : "from-orange-400 via-yellow-400 to-amber-300 bg-gradient-to-r"
         }`}
       />
-      
+
       {/* 滑动按钮 */}
       <span
-        className={`relative z-10 flex h-7 w-7 items-center justify-center rounded-full bg-white shadow-lg transition-all duration-500 ease-in-out ${
+        className={`relative z-10 flex size-7 items-center justify-center rounded-full bg-white shadow-lg transition-all duration-500 ease-in-out ${
           enabled ? "translate-x-7" : "translate-x-0"
         }`}
       >
         {enabled ? (
-          <MoonIcon className="h-4 w-4 text-indigo-600" />
+          <MoonIcon className="size-4 text-indigo-600" />
         ) : (
-          <SunIcon className="h-4 w-4 text-amber-600" />
+          <SunIcon className="size-4 text-amber-600" />
         )}
       </span>
 
       {/* 星星装饰 (暗色模式) */}
       {enabled && (
         <div className="absolute inset-0 overflow-hidden rounded-full">
-          <span className="absolute left-2 top-2 h-1 w-1 animate-pulse rounded-full bg-white opacity-75" />
-          <span className="absolute right-3 top-3 h-0.5 w-0.5 animate-pulse rounded-full bg-white opacity-60" style={{ animationDelay: "0.5s" }} />
-          <span className="absolute left-4 bottom-2 h-0.5 w-0.5 animate-pulse rounded-full bg-white opacity-80" style={{ animationDelay: "1s" }} />
+          <span className="absolute left-2 top-2 size-1 animate-pulse rounded-full bg-white opacity-75" />
+          <span
+            className="absolute right-3 top-3 size-0.5 animate-pulse rounded-full bg-white opacity-60"
+            style={{ animationDelay: "0.5s" }}
+          />
+          <span
+            className="absolute bottom-2 left-4 size-0.5 animate-pulse rounded-full bg-white opacity-80"
+            style={{ animationDelay: "1s" }}
+          />
         </div>
       )}
     </button>

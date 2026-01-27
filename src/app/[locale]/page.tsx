@@ -1,6 +1,6 @@
 import { Suspense } from "react";
-import { useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
+import { useTranslations } from "next-intl";
 
 import FAQ from "@/components/faq/page";
 import Footer from "@/components/footer";
